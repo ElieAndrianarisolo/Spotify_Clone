@@ -1,0 +1,59 @@
+docker run --name codecake -e POSTGRES_PASSWORD=password -p 5431:5432 -d postgres
+
+docker ps -a 
+
+docker stop codecake
+
+docker rm codecake
+
+---
+
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: DEBUG
+    fr.codecake.spotifyclone: DEBUG
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spotify-clone
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5431/postgres
+    username: postgres
+    password: password
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: spotify_clone
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/changelog/master.xml
+    default-schema: spotify_clone
+    enabled: true
+  #    drop-first: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 8080
+
+okta:
+  oauth2:
+    issuer: https://dev-p5617xzz2b6smqel.us.auth0.com/
+    client-id: kq3jhONLBOZSU8jCZTFnIN0cyI8crWFm
+    client-secret: oUmnxqDZXDpiTb85HlCRWaPdknNuoZdFSMwjY-V8fbH6FPge6cP6w8zfkCTbobgT
