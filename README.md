@@ -2,53 +2,43 @@
 
 ## Description
 
-Ce projet a pour but de créer un clone de Spotify, avec un backend développé en **Spring Boot 3**, un frontend en **Angular 17**, un design moderne avec **Bootstrap 5**, une base de données **PostgreSQL**, et une gestion de l'authentification via **Auth0**.
+This project aims to create a Spotify clone, with a backend developed in **Spring Boot 3**, a frontend in **Angular 17**, modern design using **Bootstrap 5**, a **PostgreSQL** database, and authentication management via **Auth0**.
 
-L'application permet aux utilisateurs de télécharger des morceaux de musique, de les écouter en streaming, de les rechercher et de gérer leurs morceaux favoris. Ce projet est conçu pour être une application fullstack robuste et moderne, et il permet de mettre en pratique des compétences dans des technologies largement utilisées aujourd'hui.
+The application allows users to upload music tracks, stream them, search for songs, and manage their favorite tracks. This project is designed to be a robust and modern full-stack application, showcasing skills in widely used technologies today.
 
-### Fonctionnalités principales
+### Key Features
 
-- **Authentification sécurisée avec Auth0 (Oauth2)** : Gestion de l'authentification des utilisateurs.
+- **Secure Authentication with Auth0 (OAuth2)**: User authentication management.
 
-![01_Login](./documentation/images_app/01_Login.png)
+![01_Login](./documentation/images_app/01_Logiad**: Enables users to upload music tracks.
 
-- **Upload de musique** : Permet aux utilisateurs de télécharger des morceaux de musique.
+![02_Add_Song](./documentation/images_app/Audio Streaming**: Music streaming functionality.
 
-![02_Add_Song](./documentation/images_app/02_Add_Song.png)
+![03_Home](./documentation/images_app/Music Search**: Allows users to search for songs in the library.
 
-- **Streaming Audio** : Diffusion de musique en streaming.
+![05_Search_Result](./documentation/images_app/05_Search_Result.pnggement**: Users can add tracks to their favorites.
 
-![03_Home](./documentation/images_app/03_Home.png)
+![04_Liked_Songs](./documentation/images_app/Responsive UI with Bootstrap 5**: User interface optimized for all devices.
+- **New Angular Features**: Utilizes Angular 17's standalone components, Signals, and new control flow syntax.
 
-- **Recherche de musique** : Fonction permettant de rechercher des morceaux dans la bibliothèque.
+## Project Structure
 
-![05_Search_Result](./documentation/images_app/05_Search_Result.png)
-
-- **Gestion des favoris** : Les utilisateurs peuvent ajouter des morceaux à leurs favoris.
-
-![04_Liked_Songs](./documentation/images_app/04_Liked_Songs.png)
-
-- **UI responsive avec Bootstrap 5** : Interface utilisateur optimisée pour tous les appareils.
-- **Nouvelles fonctionnalités d'Angular** : Utilisation de la version 17 d'Angular, avec des composants autonomes, Signal, et une nouvelle syntaxe de contrôle de flux.
-
-## Structure du projet
-
-Le projet est divisé en deux parties principales :
+The project is divided into two main parts:
 
 ### 1. **Frontend (Angular 17)**
 
-Le frontend est développé en **Angular 17** et utilise **Bootstrap 5** pour le design. L'application est responsive, permettant une utilisation fluide sur tous les types d'appareils.
+The frontend is developed using **Angular 17** and designed with **Bootstrap 5**. The application is responsive, ensuring smooth usage across all device types.
 
-**Répertoire Frontend** : `spotify-clone-front`
+**Frontend Directory**: `spotify-clone-front`
 
-- **Technologies utilisées** : Angular 17, Bootstrap 5
-- **Authentification** : Auth0 pour sécuriser l'accès des utilisateurs
-- **Composants** : Signal, Standalone components
-- **Fonctionnalités** :
-  - Téléchargement de musique
-  - Affichage des morceaux de musique
-  - Gestion des favoris
-  - Recherche de musique
+- **Technologies Used**: Angular 17, Bootstrap 5
+- **Authentication**: Auth0 for securing user access
+- **Components**: Signals, Standalone components
+- **Features**:
+  - Music upload
+  - Display of music tracks
+  - Favorites management
+  - Music search
 
 #### Usage
 
@@ -57,42 +47,42 @@ Le frontend est développé en **Angular 17** et utilise **Bootstrap 5** pour le
 - Angular CLI v17
 - IDE (VSCode, IntelliJ, Webstorm)
 
-##### Fetch dependencies
+##### Fetch Dependencies
 
 ```bash
 npm install
 ```
 
-##### Launch dev server
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+##### Launch Development Server
+Run `ng serve` for a development server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
 
 ##### Build
-Run `ng build` to build the project. The build artifacts will be stored in the dist/ directory.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ---
 
 ### 2. **Backend (Spring Boot 3)**
 
-Le backend est construit avec **Spring Boot 3** et utilise **PostgreSQL** comme base de données. Il gère la logique de l'application, la gestion des utilisateurs, le téléchargement de la musique et la recherche.
+The backend is built with **Spring Boot 3** and uses **PostgreSQL** as the database. It handles the application's logic, user management, music uploads, and search functionality.
 
-**Répertoire Backend** : `spotify-clone-back`
+**Backend Directory**: `spotify-clone-back`
 
-- **Technologies utilisées** : Spring Boot 3, PostgreSQL, Auth0 pour l'authentification
-- **Fonctionnalités** :
-  - Gestion des utilisateurs et de l'authentification
-  - Téléchargement et stockage des fichiers musicaux
-  - Streaming audio
-  - Recherche et gestion des favoris
+- **Technologies Used**: Spring Boot 3, PostgreSQL, Auth0 for authentication
+- **Features**:
+  - User and authentication management
+  - File upload and storage for music tracks
+  - Audio streaming
+  - Search and favorites management
 
 #### Usage
 
 ##### Prerequisites
 - JDK 21
-- IDE (VS code, IntelliJ)
+- IDE (VSCode, IntelliJ)
 - PostgreSQL
 
-##### Setup .env file
-Create a .env file at the root of the project
+##### Setup `.env` File
+Create a `.env` file at the root of the project with the following content:
 
 ```
 POSTGRES_USERNAME= 
@@ -105,10 +95,11 @@ AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
 ```
 
-##### Fetch the dependencies
-```
+##### Fetch Dependencies
+
+```bash
 ./mvnw install -Dmaven.test.skip=true
 ```
 
-##### Launch
-Go in your IDE and add .env file to the environment variables and then run it
+##### Launch Application
+Open your IDE, add the `.env` file to the environment variables, and then run the application.
