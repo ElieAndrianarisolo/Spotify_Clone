@@ -1,0 +1,97 @@
+<!-- Container for the form, using flexbox to center content vertically -->
+<div class="flex-column d-flex align-items-center">
+
+  <!-- Inner container to limit the form width -->
+  <div class="w-75">
+    <!-- Form title -->
+    <h1 class="mb-3 text-start">Add a song</h1>
+
+    <!-- Form element with Angular form group and submit event handler -->
+    <form id="createForm" (ngSubmit)="create()" [formGroup]="createForm">
+      <!-- Form field for song title -->
+      <div class="form-floating mb-3 text-secondary">
+        <input type="text" class="form-control" id="title"
+               [class.is-valid]="createForm.get('title')?.valid"
+               [class.is-invalid]="createForm.get('title')?.dirty && createForm.get('title')?.invalid"
+               placeholder="Title" formControlName="title"/>
+        <label for="title">Title</label>
+        <!-- Display error message if title is required but not provided -->
+        @if (createForm.get('title')?.dirty && createForm.get('title')?.hasError('required')) {
+          <div class="invalid-feedback">
+            Title is required
+          </div>
+        }
+      </div>
+
+      <!-- Form field for song author -->
+      <div class="form-floating mb-3 text-secondary">
+        <input type="text" class="form-control" id="author"
+               [class.is-valid]="createForm.get('author')?.valid"
+               [class.is-invalid]="createForm.get('author')?.dirty && createForm.get('author')?.invalid"
+               placeholder="Author" formControlName="author"/>
+        <label for="author">Author</label>
+        <!-- Display error message if author is required but not provided -->
+        @if (createForm.get('author')?.dirty && createForm.get('author')?.hasError('required')) {
+          <div class="invalid-feedback">
+            Author is required
+          </div>
+        }
+      </div>
+
+      <!-- Form field for song cover image -->
+      <div class="form-floating mb-3 text-secondary file">
+        <input type="file" class="form-control" id="cover"
+               [class.is-valid]="createForm.get('cover')?.valid"
+               placeholder="Cover" formControlName="cover"
+               accept=".jpg,.jpeg,.png,.svg"
+               (change)="onUploadCover($event.target)"/>
+        <label for="File">Cover</label>
+      </div>
+
+      <!-- Form field for song MP3 file -->
+      <div class="form-floating mb-3 text-secondary file">
+        <input type="file" class="form-control" id="file"
+               [class.is-valid]="createForm.get('file')?.valid"
+               placeholder="File" formControlName="file"
+               accept=".wav,.mp3"
+               (change)="onUploadFile($event.target)"/>
+        <label for="File">MP3</label>
+      </div>
+
+      <!-- Submit button with dynamic text and disabled state based on form validity -->
+      <div class="d-grid">
+        <button class="btn btn-primary" [disabled]="createForm.invalid || isCreating" type="submit">
+          <!-- Display different button content based on creation status -->
+          @if(!isCreating) {
+            <div>Add</div>
+          } @else if(isCreating) {
+            <div class="d-flex align-items-center justify-content-center">
+              <fa-icon icon="circle-notch" class="me-2" animation="spin"></fa-icon>
+              <div>Adding in progress...</div>
+            </div>
+          }
+        </button>
+      </div>
+    </form>
+
+    <!-- Display error alerts based on flow status -->
+    @if(flowStatus == 'error' || flowStatus == 'validation-cover-error' || flowStatus == 'validation-file-error') {
+      <ngb-alert [dismissible]="false" type="danger" class="d-flex align-items-center justify-content-center mt-3">
+        <fa-icon class="me-2" icon="circle-xmark" size="2x"></fa-icon>
+        <div>
+          <!-- Display specific error messages based on flow status -->
+          @if(flowStatus ==  'validation-cover-error') {
+            Something is wrong with the cover file
+          }
+          @if(flowStatus ==  'validation-file-error') {
+            Something is wrong with the MP3 file
+          }
+          @if(flowStatus ==  'error') {
+            Something is wrong when creating the song
+          }
+        </div>
+      </ngb-alert>
+    }
+  </div>
+
+</div>

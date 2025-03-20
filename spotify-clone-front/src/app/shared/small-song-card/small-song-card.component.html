@@ -1,0 +1,14 @@
+<!-- Container for a song card, triggering the play method on click -->
+<div (click)="play()" class="d-flex w-100">
+    <!-- Song cover image, displayed as a base64 encoded string -->
+    <img class="rounded-2" width="55px" height="55px"
+         [src]="'data:' + song().coverContentType + ';base64,'+ song().cover"/>
+    <!-- Container for song title and author information -->
+    <div class="d-flex flex-column justify-content-center ms-2">
+      <!-- Song title -->
+      <div class="mb-1 title">{{ song().title!.value }}</div>
+      <!-- Song author -->
+      <div class="author">{{ song().author!.value }}</div>
+    </div>
+  </div>
+  

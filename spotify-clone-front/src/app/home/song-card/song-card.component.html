@@ -1,0 +1,23 @@
+<!-- Container for a song card with event handlers for click, mouseover, and mouseleave -->
+<div (click)="play()"
+     (mouseover)="onHoverPlay(true)"
+     (mouseleave)="onHoverPlay(false)">
+  <!-- Card body containing song details -->
+  <div class="card-body">
+    <!-- Song cover image displayed as a base64 encoded string -->
+    <img class="card-img-top card-img-bottom"
+         [src]="'data:' + songDisplay.coverContentType + ';base64,' + songDisplay.cover" alt="cover"/>
+    <!-- Song title -->
+    <h5 class="title mt-3">{{ songDisplay.title?.value }}</h5>
+    <!-- Song author -->
+    <p class="author">{{ songDisplay.author?.value }}</p>
+  </div>
+  <!-- Conditionally display a play icon when songDisplay.displayPlay is true -->
+  @if (songDisplay.displayPlay) {
+    <!-- Play icon positioned absolutely with animation -->
+    <div class="play position-absolute d-flex align-items-center" [@inOutAnimation]>
+      <!-- Font Awesome play icon -->
+      <fa-icon class="text-primary" [icon]="'circle-play'"></fa-icon>
+    </div>
+  }
+</div>

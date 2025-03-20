@@ -1,0 +1,30 @@
+<!-- Container for the navigation grid with a dark background and rounded corners -->
+<div class="rounded-2 p-2 grid bg-dark">
+    <!-- Unordered list for navigation items -->
+    <ul class="nav flex-column">
+      <!-- Navigation item for the home page -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" 
+           routerLink="/" 
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">
+          <!-- Home icon -->
+          <fa-icon icon="home" class="me-3 nav-icon"></fa-icon>
+          <!-- Home text -->
+          <div>Home</div>
+        </a>
+      </li>
+      <!-- Navigation item for the search page -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" 
+           routerLink="/search" 
+           routerLinkActive="active">
+          <!-- Search icon -->
+          <fa-icon icon="search" class="me-3 nav-icon"></fa-icon>
+          <!-- Search text -->
+          <div>Search</div>
+        </a>
+      </li>
+    </ul>
+</div>
+  

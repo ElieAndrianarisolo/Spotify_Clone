@@ -1,0 +1,44 @@
+<!-- Container for toast notifications, positioned absolutely with a high z-index -->
+<div class="position-absolute z-2 mt-3 toast-container">
+  <!-- Loop through each toast notification in the ToastService -->
+  @for (toast of toastService.toasts; track toast) {
+    <!-- ngb-toast component for displaying individual toast notifications -->
+    <ngb-toast
+      [class]="toast.className"
+      [autohide]="true"
+      [delay]="1000"
+      (hidden)="toastService.remove(toast)">
+      <!-- Display the body text of the toast notification -->
+      {{ toast.body }}
+    </ngb-toast>
+  }
+</div>
+
+<!-- Main content container with a full-height layout -->
+<div class="container-fluid pt-3 vh-100">
+  <!-- Row to organize navigation and main content -->
+  <div class="row height-main-row">
+    <!-- Column for navigation components, hidden on smaller screens -->
+    <div class="d-none d-sm-none d-md-block col-md-3 col-xl-2 navigation pe-2 h-100">
+      <!-- Navigation component -->
+      <app-navigation></app-navigation>
+      <!-- Library component -->
+      <app-library></app-library>
+    </div>
+    <!-- Column for main content, taking up the full width on smaller screens -->
+    <div class="col-12 col-sm-12 col-md-9 col-xl-10 ps-0 h-100">
+      <!-- Header component -->
+      <app-header></app-header>
+      <!-- Container for the main content area with scrolling capability -->
+      <div class="rounded-bottom-2 p-3 bg-dark overflow-scroll full-height-main-content">
+        <!-- Router outlet for displaying routed components -->
+        <router-outlet></router-outlet>
+      </div> 
+    </div>
+  </div>
+  <!-- Footer section -->
+  <footer>
+    <!-- Player component, spanning the full width -->
+    <app-player class="w-100"></app-player>
+  </footer>
+</div>

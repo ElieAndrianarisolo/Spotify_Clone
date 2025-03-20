@@ -1,0 +1,44 @@
+<!-- Search bar container with an absolute position and z-index -->
+<div class="position-absolute input-group flex-nowrap search-bar z-3">
+  <!-- Search icon in the input group -->
+  <span class="border-0 rounded-start-5 input-group-text pe-1">
+    <fa-icon icon="search"></fa-icon>
+  </span>
+  <!-- Input field for searching, bound to the searchTerm model -->
+  <input [ngModel]="searchTerm" (ngModelChange)="onSearch($event)" name="search"
+         class="border-0 rounded-end-5 form-control me-2 search-input ps-2"
+         type="search" placeholder="What do you want to listen to ?" aria-label="Search"/>
+</div>
+
+<!-- Container for search results -->
+<div class="pt-3">
+  <!-- Conditional block to display a loader if search is in progress -->
+  @if (isSearching) {
+    <!-- Centered loader with a spinner -->
+    <div class="d-flex justify-content-center mt-5 h-100">
+      <div class="spinner-grow text-primary loader">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  } 
+  <!-- Conditional block to display a "no results" message if search term is valid but no results are found -->
+  @else if (searchTerm.length >= 1 && songsResult.length === 0) {
+    <!-- Centered message indicating no search results -->
+    <div class="d-flex justify-content-center h-100">
+      <div>No results for this search :(</div>
+    </div>
+  } 
+  <!-- Conditional block to display search results if available -->
+  @else {
+    <!-- Loop through each song in the search results, tracking by publicId -->
+    @for (song of songsResult; track song.publicId) {
+      <!-- Card container for each song -->
+      <div class="song-card-background w-100 mb-2 p-2 pe-3 d-flex align-items-center">
+        <!-- Small song card component for each song -->
+        <app-small-song-card class="w-100" [song]="song" (songToPlay$)="onPlay($event)" />
+        <!-- Favorite song button component for each song -->
+        <app-favorite-song-btn [song]="song"/>
+      </div>
+    }
+  }
+</div>

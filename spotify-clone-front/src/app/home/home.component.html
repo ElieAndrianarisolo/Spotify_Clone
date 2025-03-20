@@ -1,0 +1,30 @@
+<!-- Title for the playlists section -->
+<h1 class="mb-3">
+  Playlists
+</h1>
+
+<!-- Favorite song card component -->
+<app-favorite-song-card/>
+
+<!-- Title for the "Are you ready for it?" section -->
+<h1 class="mb-3 mt-3">Are you ready for it ?</h1>
+
+<!-- Conditional block to display a loader if data is loading -->
+@if (isLoading) {
+  <!-- Centered loader with a spinner -->
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="spinner-grow text-primary loader" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+} @else {
+  <!-- Container for displaying all songs in a grid -->
+  <div class="d-flex flex-wrap">
+    <!-- Loop through each song in the allSongs array, tracking by publicId -->
+    @for (song of allSongs; track song.publicId) {
+      <!-- Song card component with event handling for playback -->
+      <app-song-card class="card song-card-background mt-0 mb-4 ms-0 me-4"
+                     [song]="song" (songToPlay$)="onPlaySong($event)"/>
+    }
+  </div>
+}

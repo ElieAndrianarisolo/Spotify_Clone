@@ -1,0 +1,49 @@
+<!-- Container for the music player controls with a black background -->
+<div class="d-flex justify-content-between align-items-center player bg-black">
+  <!-- Section to display the currently playing song -->
+  <div class="song-played d-flex align-items-center">
+    <!-- Conditionally display the song card and favorite button if a song is playing -->
+    @if (currentSong) {
+      <!-- Small song card component for the current song -->
+      <app-small-song-card [song]="currentSong"/>
+      <!-- Favorite song button component for the current song -->
+      <app-favorite-song-btn class="ms-4" [song]="currentSong"/>
+    }
+  </div>
+  <!-- Section for playback controls -->
+  <div class="d-flex justify-content-center align-items-center">
+    <!-- Backward button to skip to the previous song -->
+    <fa-icon class="control" icon="backward-step" (click)="onBackward()"></fa-icon>
+    <!-- Conditional display of play/pause button based on the current playback state -->
+    @if (this.isPlaying) {
+      <!-- Pause button -->
+      <fa-icon class="mx-4 play-icon" (click)="pause()" icon="circle-pause"></fa-icon>
+    } @else {
+      <!-- Play button -->
+      <fa-icon class="mx-4 play-icon" (click)="play()" icon="circle-play"></fa-icon>
+    }
+    <!-- Forward button to skip to the next song -->
+    <fa-icon class="control" icon="forward-step" (click)="onForward()"></fa-icon>
+  </div>
+  <!-- Section for volume controls -->
+  <div class="d-flex justify-content-between align-items-center volume">
+    <!-- Volume icon that toggles mute -->
+    <div class="volume-icon" (click)="onMute()">
+      <!-- Conditional display of volume icons based on the current volume level -->
+      @if (isMuted || currentVolume == 0) {
+        <!-- Mute icon -->
+        <fa-icon icon="volume-mute"></fa-icon>
+      } @else if (currentVolume < 0.3) {
+        <!-- Low volume icon -->
+        <fa-icon icon="volume-low"></fa-icon>
+      } @else if (currentVolume <= 1) {
+        <!-- High volume icon -->
+        <fa-icon icon="volume-high"></fa-icon>
+      }
+    </div>
+    <!-- Volume slider input -->
+    <input type="range" class="form-range ms-2"
+           [ngModel]="currentVolume * 100"
+           (ngModelChange)="onVolumeChange($event)">
+  </div>
+</div>

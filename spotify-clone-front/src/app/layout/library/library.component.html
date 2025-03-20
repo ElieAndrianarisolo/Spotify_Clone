@@ -1,0 +1,36 @@
+<!-- Header section for the library with a dark background and rounded corners -->
+<div class="mt-2 rounded-top-2 py-2 ps-2 pe-3 bg-dark">
+  <!-- Container to justify content between library title and add song link -->
+  <div class="d-flex justify-content-between align-items-center text-secondary">
+    <!-- Library title with an icon -->
+    <div class="d-flex align-items-center ms-3">
+      <fa-icon class="nav-icon me-3" icon="book"></fa-icon>
+      <div>Your Library</div>
+    </div>
+    <!-- Link to add a new song -->
+    <a routerLink="/add-song">
+      <fa-icon class="nav-icon" icon="plus"></fa-icon>
+    </a>
+  </div>
+</div>
+
+<!-- Main library content area with a dark background and scrolling capability -->
+<div class="d-flex flex-column rounded-bottom-2 library-height overflow-scroll bg-dark p-2">
+  <!-- Conditional block to display a loader if data is loading -->
+  @if (isLoading) {
+    <!-- Centered loader with a spinner -->
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="spinner-grow text-primary loader" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  } @else {
+    <!-- Loop through each song in the library, tracking by publicId -->
+    @for (song of songs; track song.publicId) {
+      <!-- Small song card component for each song -->
+      <div class="mt-1 library-song-card p-1">
+        <app-small-song-card [song]="song" (songToPlay$)="onPlaySong($event)"/>
+      </div>
+    }
+  }
+</div>

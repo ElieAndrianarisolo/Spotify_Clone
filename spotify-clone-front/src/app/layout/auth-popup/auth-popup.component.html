@@ -1,0 +1,12 @@
+<!-- Container for the authentication popup with a dark background and centered content -->
+<div class="bg-dark d-flex align-items-center flex-column p-4 auth-popup">
+  <!-- Title for the popup, encouraging users to start listening with a free account -->
+  <h2 class="mb-4">Start listening now with a free account</h2>
+  <!-- Inner container to vertically center the buttons -->
+  <div class="h-75 w-100 d-flex flex-column justify-content-center">
+    <!-- Primary button to trigger the login action -->
+    <button (click)="login()" class="btn btn-primary w-100 mb-3" type="button">Login</button>
+    <!-- Secondary button to trigger the login action (should ideally be labeled as "Sign up" and have a different action) -->
+    <button (click)="login()" class="btn btn-secondary w-100 mb-3" type="button">Sign up</button>
+  </div>
+</div>

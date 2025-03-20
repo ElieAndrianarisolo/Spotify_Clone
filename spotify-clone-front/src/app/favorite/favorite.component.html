@@ -1,0 +1,16 @@
+<!-- Title for the section displaying liked songs -->
+<h1 class="mb-3">Liked songs</h1>
+
+<!-- Container for the list of liked songs -->
+<div class="pt-3">
+  <!-- Loop through each song in the favoriteSongs array, tracking by publicId -->
+  @for(song of favoriteSongs; track song.publicId) {
+    <!-- Card container for each song, styled with a background and padding -->
+    <div class="song-card-background w-100 mb-2 p-2 pe-3 d-flex align-items-center">
+      <!-- Small song card component, passing the song object and handling play event -->
+      <app-small-song-card class="w-100" [song]="song" (songToPlay$)="onPlay(song)"/>
+      <!-- Favorite song button component, passing the song object -->
+      <app-favorite-song-btn [song]="song" />
+    </div>
+  }
+</div>

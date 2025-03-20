@@ -1,0 +1,14 @@
+<!-- Conditional block to display favorite button only if the user is authenticated -->
+@if (authService.isAuthenticated()) {
+  <!-- Container for the favorite button, triggering the onFavorite method on click -->
+  <div (click)="onFavorite(song())">
+    <!-- Conditional block to display a filled or empty heart icon based on the song's favorite status -->
+    @if(song().favorite) {
+      <!-- Filled heart icon if the song is a favorite -->
+      <fa-icon class="favorite text-primary" [icon]="['fas', 'heart']"></fa-icon>
+    } @else {
+      <!-- Empty heart icon if the song is not a favorite -->
+      <fa-icon class="favorite text-primary" [icon]="['far', 'heart']"></fa-icon>
+    }
+  </div>
+}

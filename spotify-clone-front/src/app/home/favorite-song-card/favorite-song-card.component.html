@@ -1,0 +1,14 @@
+<!-- Card container for the liked songs playlist -->
+<div class="card song-card-background playlist-card">
+  <!-- Card body with padding and rounded corners, serving as a link to the favorites page -->
+  <div class="card-body p-1 d-flex w-100 rounded-2" routerLink="favorites">
+    <!-- Image representing liked songs -->
+    <img class="rounded-2" width="55px" height="55px"
+         [src]="'../../../assets/img/like.png'" alt="like songs">
+    <!-- Text content for the liked songs playlist -->
+    <div class="d-flex flex-column justify-content-center ms-2">
+      <!-- Title for the liked songs playlist -->
+      <div class="mb-1 title">Liked song</div>
+    </div>
+  </div>
+</div>

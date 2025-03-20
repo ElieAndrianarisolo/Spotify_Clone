@@ -1,0 +1,46 @@
+<!-- Sticky navigation bar with a dark background and rounded top corners -->
+<nav class="rounded-top-2 navbar sticky-top bg-dark z-1 p-2">
+  <!-- Container to hold the navigation content -->
+  <div class="container-fluid">
+    <!-- Inner container to justify content between navigation controls and user actions -->
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <!-- Container for navigation controls (back and forward) -->
+      <div class="d-flex align-items-center">
+        <!-- Backward navigation button -->
+        <div (click)="goBackward()"
+             class="me-2 rounded-5 border-1 bg-black router-icon d-flex align-items-center justify-content-center">
+          <fa-icon icon="chevron-left" size="2x"></fa-icon>
+        </div>
+        <!-- Forward navigation button -->
+        <div (click)="goForward()"
+             class="rounded-5 border-1 bg-black router-icon d-flex align-items-center justify-content-center">
+          <fa-icon icon="chevron-right" size="2x"></fa-icon>
+        </div>
+      </div>
+      <!-- Container for user actions (login/signup or logout) -->
+      <div>
+        <!-- Conditional block to display login/signup links if the user is not authenticated -->
+        @if (!authService.isAuthenticated()) {
+          <!-- Links for signing up and logging in -->
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="hover-animation">
+              <a (click)="login()" class="me-4">Sign up</a>
+            </div>
+            <a class="btn btn-light hover-animation" (click)="login()">Login</a>
+          </div>
+        } @else {
+          <!-- Logout button and user avatar/profile icon if the user is authenticated -->
+          <button class="btn btn-light hover-animation me-2" (click)="logout()">Logout</button>
+          <a>
+            <!-- Display user avatar if available, otherwise show a default icon -->
+            @if (connectedUser.imageUrl != null) {
+              <img src="{{connectedUser.imageUrl}}" alt="user-avatar" class="avatar" width="35" height="35"/>
+            } @else {
+              <fa-icon icon="user" class="avatar-unknown"></fa-icon>
+            }
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
