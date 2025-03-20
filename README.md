@@ -50,23 +50,23 @@ Le frontend est développé en **Angular 17** et utilise **Bootstrap 5** pour le
   - Gestion des favoris
   - Recherche de musique
 
-## Usage
+#### Usage
 
-### Prerequisites
+##### Prerequisites
 - NodeJS 20.11 LTS
 - Angular CLI v17
 - IDE (VSCode, IntelliJ, Webstorm)
 
-### Fetch dependencies
+##### Fetch dependencies
 
 ```bash
 npm install
 ```
 
-### Launch dev server
+##### Launch dev server
 Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
 
-### Build
+##### Build
 Run `ng build` to build the project. The build artifacts will be stored in the dist/ directory.
 
 ---
@@ -84,14 +84,14 @@ Le backend est construit avec **Spring Boot 3** et utilise **PostgreSQL** comme 
   - Streaming audio
   - Recherche et gestion des favoris
 
-## Usage
+#### Usage
 
-### Prerequisites
+##### Prerequisites
 - JDK 21
 - IDE (VS code, IntelliJ)
 - PostgreSQL
 
-### Setup .env file
+##### Setup .env file
 Create a .env file at the root of the project
 
 ```
@@ -105,10 +105,10 @@ AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
 ```
 
-### Fetch the dependencies
+##### Fetch the dependencies
 ```
 ./mvnw install -Dmaven.test.skip=true
 ```
 
-### Launch
+##### Launch
 Go in your IDE and add .env file to the environment variables and then run it
