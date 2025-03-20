@@ -10,15 +10,26 @@ The application allows users to upload music tracks, stream them, search for son
 
 - **Secure Authentication with Auth0 (OAuth2)**: User authentication management.
 
-![01_Login](./documentation/images_app/01_Logiad**: Enables users to upload music tracks.
+![01_Login](./documentation/images_app/01_Login.png)
 
-![02_Add_Song](./documentation/images_app/Audio Streaming**: Music streaming functionality.
+- **Upload music**: Enables users to upload music tracks.
 
-![03_Home](./documentation/images_app/Music Search**: Allows users to search for songs in the library.
+![02_Add_Song](./documentation/images_app/02_Add_Song.png)
 
-![05_Search_Result](./documentation/images_app/05_Search_Result.pnggement**: Users can add tracks to their favorites.
+- **Audio Streaming**: Music streaming functionality.
 
-![04_Liked_Songs](./documentation/images_app/Responsive UI with Bootstrap 5**: User interface optimized for all devices.
+![03_Home](./documentation/images_app/03_Home.png)
+
+- **Music Search**: Allows users to search for songs in the library.
+
+![05_Search_Result](./documentation/images_app/05_Search_Result.png)
+
+- **Favourite songs management**: Users can add tracks to their favorites.
+
+![04_Liked_Songs](./documentation/images_app/04_Liked_Songs.png)
+
+- **Responsive UI with Bootstrap 5**: User interface optimized for all devices.
+
 - **New Angular Features**: Utilizes Angular 17's standalone components, Signals, and new control flow syntax.
 
 ## Project Structure
